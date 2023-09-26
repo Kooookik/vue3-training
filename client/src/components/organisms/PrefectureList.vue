@@ -45,9 +45,9 @@ const prefecture_Checked = computed({
   set: () => {}
 })
 
-onMounted(() => {
+onMounted(async () => {
   // TODO: 全県取得のAPIへリクエストを送ってみましょう!
-  const response = axiosInstance.get<string>("/prefectures")
+  const response = await axiosInstance.get<string>("/prefectures")
 })
 </script>
 
