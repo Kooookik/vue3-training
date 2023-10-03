@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { computed } from "vue"
 import { PrefectureDisplay } from "@/types/prefecture"
+import { computed } from "vue"
 const props = defineProps<{
   prefecture: PrefectureDisplay
 }>()
+
 const emits = defineEmits<{
   (eventName: "check", arg: PrefectureDisplay): void
 }>()
+
 const checkBox = computed({
   get: () => props.prefecture.isCheck,
   set: (isCheck: boolean) => emits("check", { ...props.prefecture, isCheck })
@@ -17,6 +19,7 @@ const checkBox = computed({
   <div class="prefecture-area">
     <input v-model="checkBox" type="checkbox" />
     <span>{{ prefecture.prefName }}</span>
+    <span>{{ prefecture.isCheck }}</span>
   </div>
 </template>
 <style scoped>
