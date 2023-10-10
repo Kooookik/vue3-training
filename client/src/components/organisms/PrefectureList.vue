@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from "vue"
 import { PrefectureResponse } from "@/types/api"
 import { PrefectureDisplay } from "@/types/prefecture"
 import axiosInstance from "@/utils/axiosSettings"
+// eslint-disable-next-line import/order
 import PrefectureCheck from "./PrefectureCheck.vue"
 // TODO: prefectureで千葉県を表示してみましょう
 // eslint-disable-next-line camelcase
@@ -57,7 +58,18 @@ onMounted(async () => {
   }))
 })
 
-function handleCheck(pref: PrefectureDisplay) {}
+function handleCheck(prefecture: PrefectureDisplay) {
+  // prefectures.value.filter((x) => x.prefCode === prefecture.prefCode)=prefecture
+
+  prefectures.value = prefectures.value.map((x) => ({
+    ...x,
+    isCheck: prefecture.isCheck
+  }))
+}
+// .map((x) => ({
+//   ...x,
+//   isCheck: prefecture.isCheck
+// }))
 </script>
 
 <template>
@@ -65,11 +77,11 @@ function handleCheck(pref: PrefectureDisplay) {}
     <h3>都道府県</h3>
     <div class="prefecture-flex">
       <!-- TODO: 県を表示してみましょう -->
-      <div v-for="prefecture in prefectures" :key="prefecture.prefCode">
+      <div v-for="pref in prefectures" :key="pref.prefCode">
         <!-- <input v-model="prefecture.isCheck" type="checkbox" /> -->
         <PrefectureCheck
           v-if="prefectures.length > 0"
-          :prefecture="prefecture"
+          :prefecture="pref"
           @check="handleCheck"
         ></PrefectureCheck>
       </div>
@@ -89,7 +101,7 @@ function handleCheck(pref: PrefectureDisplay) {}
 
 .prefecture-flex {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  /* grid-template-columns: 33% 33% 33%; */
   /* grid-template-columns: 25% 25% 25% 25%; */
 }
 </style>

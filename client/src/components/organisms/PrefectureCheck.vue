@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { PrefectureDisplay } from "@/types/prefecture"
+// eslint-disable-next-line import/order
 import { computed } from "vue"
+
 const props = defineProps<{
   prefecture: PrefectureDisplay
 }>()
 
 const emits = defineEmits<{
-  (eventName: "check", arg: PrefectureDisplay): void
+  (eventName: "check", prefecture: PrefectureDisplay): void
 }>()
 
 const checkBox = computed({
@@ -19,7 +21,7 @@ const checkBox = computed({
   <div class="prefecture-area">
     <input v-model="checkBox" type="checkbox" />
     <span>{{ prefecture.prefName }}</span>
-    <span>{{ prefecture.isCheck }}</span>
+    チェックボックスの値：{{ prefecture.isCheck }}
   </div>
 </template>
 <style scoped>
