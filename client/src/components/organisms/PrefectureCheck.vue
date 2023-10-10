@@ -5,6 +5,7 @@ import { computed } from "vue"
 
 const props = defineProps<{
   prefecture: PrefectureDisplay
+  // index: number
 }>()
 
 const emits = defineEmits<{
@@ -20,8 +21,7 @@ const checkBox = computed({
 <template>
   <div class="prefecture-area">
     <input v-model="checkBox" type="checkbox" />
-    <span>{{ prefecture.prefName }}</span>
-    チェックボックスの値：{{ prefecture.isCheck }}
+    {{ prefecture.prefName }}
   </div>
 </template>
 <style scoped>

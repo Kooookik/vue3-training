@@ -2,7 +2,7 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <h1 class="header-title">タイトル</h1>
+      <h1 class="header-title">都道府県</h1>
       <!-- TODO: 各ページのリンクを書いてみましょう -->
       <router-link to=""></router-link>
       <router-link to=""></router-link>
@@ -14,7 +14,7 @@
   padding: 12px;
 }
 .header {
-  background-color: grey;
+  background-color: rgb(38, 202, 211);
   display: flex;
   align-items: center;
 }
